@@ -3,9 +3,10 @@
     name:<input v-model="name" />{{ name }}<br />
     salary:<input type="number" v-model="salary" />{{ salary }}<br />
     <button v-on:click="addSalary">提交</button>
+    <button @click="showInfo">查看个人信息</button>
     <hr />
 
-    <div class="userinfo">
+    <div class="userinfo" v-if="show">
       <h2>个人信息</h2>
       <p>age:<input type="number" v-model="userinfo.age" />{{ userinfo.age }}</p>
       <p>
@@ -45,6 +46,7 @@ export default {
         skills: ['js', 'css', 'html'],
       },
       newskill: '',
+      show: false,
     }
   },
   methods: {
@@ -56,6 +58,9 @@ export default {
         this.userinfo.skills.push(this.newskill)
         this.newskill = ''
       }
+    },
+    showInfo() {
+      this.show = !this.show
     },
   },
 }
