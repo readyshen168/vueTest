@@ -6,7 +6,7 @@
     <button @click="showInfo">查看个人信息</button>
     <hr />
 
-    <div class="userinfo" v-if="show">
+    <div class="userinfo" v-show="show">
       <h2>个人信息</h2>
       <p>age:<input type="number" v-model="userinfo.age" />{{ userinfo.age }}</p>
       <p>
