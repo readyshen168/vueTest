@@ -24,6 +24,9 @@
       <p>
         技术：<span v-for="skill in userinfo.skills" :key="skill">{{ skill }}</span>
       </p>
+      <p>
+        <input type="text" v-model="newskill" /><button @click="addNewskill">add new skill</button>
+      </p>
       <p>个人信息汇总：{{ userinfo }}</p>
     </div>
   </div>
@@ -41,11 +44,18 @@ export default {
         job: 'devops',
         skills: ['js', 'css', 'html'],
       },
+      newskill: '',
     }
   },
   methods: {
     addSalary() {
       this.salary = Number(this.salary) + 1000
+    },
+    addNewskill() {
+      if (this.newskill) {
+        this.userinfo.skills.push(this.newskill)
+        this.newskill = ''
+      }
     },
   },
 }
