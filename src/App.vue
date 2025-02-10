@@ -5,12 +5,12 @@
     <button v-on:click="addSalary">提交</button>
     <hr />
 
-    <div>
+    <div class="userinfo">
       <h2>个人信息</h2>
       <p>age:<input type="number" v-model="userinfo.age" />{{ userinfo.age }}</p>
       <p>
-        gender: <input type="radio" name="gender" v-model="userinfo.gender" />男
-        <input type="radio" name="gender" v-model="userinfo.gender" />女
+        gender: <input type="radio" name="gender" v-model="userinfo.gender" value="male" />男
+        <input type="radio" name="gender" v-model="userinfo.gender" value="female" />女
       </p>
       <p>
         岗位：
@@ -20,6 +20,9 @@
           <option value="devops">运维</option>
           <option value="testing">测试</option>
         </select>
+      </p>
+      <p>
+        技术：<span v-for="skill in userinfo.skills" :key="skill">{{ skill }}</span>
       </p>
       <p>个人信息汇总：{{ userinfo }}</p>
     </div>
@@ -36,6 +39,7 @@ export default {
         age: 18,
         gender: 'male',
         job: 'devops',
+        skills: ['js', 'css', 'html'],
       },
     }
   },
@@ -47,4 +51,15 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.userinfo {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+}
+.userinfo span {
+  background-color: yellow;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+</style>
