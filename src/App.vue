@@ -35,6 +35,7 @@
 
 <script lang="ts">
 import { ref } from 'vue'
+// import MySalary from './components/MySalary'
 
 export default {
   setup() {
@@ -43,31 +44,36 @@ export default {
     function addSalary() {
       salary.value = Number(salary.value) + 1000
     }
-    return { name, salary, addSalary }
-  },
 
-  data() {
-    return {
-      userinfo: {
-        age: 18,
-        gender: 'male',
-        job: 'devops',
-        skills: ['js', 'css', 'html'],
-      },
-      newskill: '',
-      show: false,
-    }
-  },
-  methods: {
-    addNewskill() {
-      if (this.newskill) {
-        this.userinfo.skills.push(this.newskill)
-        this.newskill = ''
+    const userinfo = ref({
+      age: 18,
+      gender: 'male',
+      job: 'devops',
+      skills: ['js', 'css', 'html'],
+    })
+    const newskill = ref('')
+    const show = ref(false)
+
+    function addNewskill() {
+      if (newskill.value) {
+        userinfo.value.skills.push(newskill.value)
+        newskill.value = ''
       }
-    },
-    showInfo() {
-      this.show = !this.show
-    },
+    }
+
+    function showInfo() {
+      show.value = !show.value
+    }
+    return {
+      name,
+      salary,
+      addSalary,
+      userinfo,
+      newskill,
+      show,
+      addNewskill,
+      showInfo,
+    }
   },
 }
 </script>
