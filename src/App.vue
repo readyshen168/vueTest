@@ -35,33 +35,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-// import MySalary from './components/MySalary'
+import MySalary from '@/components/MySalary'
+import MyInfo from '@/components/MyInfo'
 
-const name = ref('roy')
-const salary = ref(12000)
-function addSalary() {
-  salary.value = Number(salary.value) + 1000
-}
-
-const userinfo = ref({
-  age: 18,
-  gender: 'male',
-  job: 'devops',
-  skills: ['js', 'css', 'html'],
-})
-const newskill = ref('')
-const show = ref(false)
-
-function addNewskill() {
-  if (newskill.value) {
-    userinfo.value.skills.push(newskill.value)
-    newskill.value = ''
-  }
-}
-
-function showInfo() {
-  show.value = !show.value
-}
+const { name, salary, addSalary } = MySalary()
+const { show, userinfo, showInfo, addNewskill, newskill } = MyInfo()
 </script>
 
 <style scoped>
