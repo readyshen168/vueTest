@@ -6,14 +6,14 @@ export default function () {
   function showNameInput() {
     console.log(nameInput)
     console.log(nameInput.value)
-    console.log(nameInput.value.value)
+    //console.log(nameInput.value.value)
   }
   const name = ref('roy')
-  const salary = ref(13000)
+  const salary = ref(15000)
   function addSalary() {
     salary.value = Number(salary.value) + 1000
     console.log(salary)
     showNameInput()
   }
-  return { nameInput, name, salary, addSalary }
+  return { name, salary, addSalary }
 }

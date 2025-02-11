@@ -36,9 +36,8 @@
 <script setup lang="ts">
 import MySalary from '@/components/MySalary'
 import MyInfo from '@/components/MyInfo'
-import { ref } from 'vue'
 
-const { nameInput, name, salary, addSalary } = MySalary()
+const { name, salary, addSalary } = MySalary()
 const { userinfo, age, skills, newskill, show, addNewskill, showInfo } = MyInfo()
 </script>
 
