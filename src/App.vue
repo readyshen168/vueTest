@@ -33,48 +33,34 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue'
 // import MySalary from './components/MySalary'
 
-export default {
-  setup() {
-    const name = ref('roy')
-    const salary = ref(16000)
-    function addSalary() {
-      salary.value = Number(salary.value) + 1000
-    }
+const name = ref('roy')
+const salary = ref(12000)
+function addSalary() {
+  salary.value = Number(salary.value) + 1000
+}
 
-    const userinfo = ref({
-      age: 18,
-      gender: 'male',
-      job: 'devops',
-      skills: ['js', 'css', 'html'],
-    })
-    const newskill = ref('')
-    const show = ref(false)
+const userinfo = ref({
+  age: 18,
+  gender: 'male',
+  job: 'devops',
+  skills: ['js', 'css', 'html'],
+})
+const newskill = ref('')
+const show = ref(false)
 
-    function addNewskill() {
-      if (newskill.value) {
-        userinfo.value.skills.push(newskill.value)
-        newskill.value = ''
-      }
-    }
+function addNewskill() {
+  if (newskill.value) {
+    userinfo.value.skills.push(newskill.value)
+    newskill.value = ''
+  }
+}
 
-    function showInfo() {
-      show.value = !show.value
-    }
-    return {
-      name,
-      salary,
-      addSalary,
-      userinfo,
-      newskill,
-      show,
-      addNewskill,
-      showInfo,
-    }
-  },
+function showInfo() {
+  show.value = !show.value
 }
 </script>
 
