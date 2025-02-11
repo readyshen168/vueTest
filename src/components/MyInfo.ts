@@ -1,7 +1,7 @@
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 export default function () {
-  const userinfo = ref({
+  const userinfo = reactive({
     age: 18,
     gender: 'male',
     job: 'devops',
@@ -12,13 +12,14 @@ export default function () {
 
   function addNewskill() {
     if (newskill.value) {
-      userinfo.value.skills.push(newskill.value)
+      userinfo.skills.push(newskill.value)
       newskill.value = ''
     }
   }
 
   function showInfo() {
     show.value = !show.value
+    console.log(userinfo)
   }
   return { userinfo, newskill, show, addNewskill, showInfo }
 }
