@@ -1,6 +1,6 @@
 <template>
   <div>
-    name:<input v-model="name" />{{ name }}<br />
+    name:<input ref="nameInput" v-model="name" />{{ name }}<br />
     salary:<input type="number" v-model="salary" />{{ salary }}<br />
     <button v-on:click="addSalary">提交</button>
     <button @click="showInfo">查看个人信息</button>
@@ -36,8 +36,9 @@
 <script setup lang="ts">
 import MySalary from '@/components/MySalary'
 import MyInfo from '@/components/MyInfo'
+import { ref } from 'vue'
 
-const { name, salary, addSalary } = MySalary()
+const { nameInput, name, salary, addSalary } = MySalary()
 const { userinfo, age, skills, newskill, show, addNewskill, showInfo } = MyInfo()
 </script>
 
