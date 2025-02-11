@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { reactive, ref, toRef } from 'vue'
 
 export default function () {
   const userinfo = reactive({
@@ -7,6 +7,10 @@ export default function () {
     job: 'devops',
     skills: ['js', 'css', 'html'],
   })
+
+  const age = toRef(userinfo, 'age')
+  const skills = toRef(userinfo, 'skills')
+
   const newskill = ref('')
   const show = ref(false)
 
@@ -21,5 +25,5 @@ export default function () {
     show.value = !show.value
     console.log(userinfo)
   }
-  return { userinfo, newskill, show, addNewskill, showInfo }
+  return { userinfo, age, skills, newskill, show, addNewskill, showInfo }
 }

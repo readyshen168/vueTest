@@ -8,7 +8,7 @@
 
     <div class="userinfo" v-show="show">
       <h2>个人信息</h2>
-      <p>age:<input type="number" v-model="userinfo.age" />{{ userinfo.age }}</p>
+      <p>age:<input type="number" v-model="age" />{{ age }}</p>
       <p>
         gender: <input type="radio" name="gender" v-model="userinfo.gender" value="male" />男
         <input type="radio" name="gender" v-model="userinfo.gender" value="female" />女
@@ -23,7 +23,7 @@
         </select>
       </p>
       <p>
-        技术：<span v-for="skill in userinfo.skills" :key="skill">{{ skill }}</span>
+        技术：<span v-for="skill in skills" :key="skill">{{ skill }}</span>
       </p>
       <p>
         <input type="text" v-model="newskill" /><button @click="addNewskill">add new skill</button>
@@ -34,12 +34,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import MySalary from '@/components/MySalary'
 import MyInfo from '@/components/MyInfo'
 
 const { name, salary, addSalary } = MySalary()
-const { show, userinfo, showInfo, addNewskill, newskill } = MyInfo()
+const { userinfo, age, skills, newskill, show, addNewskill, showInfo } = MyInfo()
 </script>
 
 <style scoped>
