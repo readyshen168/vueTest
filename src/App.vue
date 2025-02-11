@@ -34,11 +34,20 @@
 </template>
 
 <script lang="ts">
+import { ref } from 'vue'
+
 export default {
+  setup() {
+    const name = ref('roy')
+    const salary = ref(16000)
+    function addSalary() {
+      salary.value = Number(salary.value) + 1000
+    }
+    return { name, salary, addSalary }
+  },
+
   data() {
     return {
-      name: 'roy',
-      salary: 15000,
       userinfo: {
         age: 18,
         gender: 'male',
@@ -50,9 +59,6 @@ export default {
     }
   },
   methods: {
-    addSalary() {
-      this.salary = Number(this.salary) + 1000
-    },
     addNewskill() {
       if (this.newskill) {
         this.userinfo.skills.push(this.newskill)
