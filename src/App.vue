@@ -1,7 +1,6 @@
 <template>
   <div>
-    <MySalaryInfo ref="mySalaryInfo"></MySalaryInfo>
-    <button @click="showRes">查看元素信息</button>
+    <MySalaryInfo ref="mySalaryInfo" v-model:show="show"></MySalaryInfo>
     <hr />
 
     <div class="userinfo" v-show="show">
@@ -34,34 +33,21 @@
 <script setup lang="ts">
 import MySalaryInfo from './components/MySalaryInfo.vue'
 import MyInfo from '@/components/MyInfo'
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 
 const mySalaryInfo = ref()
 const show = ref(false)
-const { userinfo, age, skills, newskill, addNewskill } = MyInfo()
 
-function showRes() {
-  console.log(mySalaryInfo)
-  console.log(mySalaryInfo.value)
-  console.log(mySalaryInfo.value.show)
-}
+const { userinfo, age, skills, newskill, addNewskill } = MyInfo()
 
 onMounted(async () => {
   await nextTick()
   if (mySalaryInfo.value) {
     show.value = mySalaryInfo.value.show
   } else {
-    console.log('mySalaryInfo is undefined')
+    console.log('mySalaryInfo is not ready')
   }
 })
-
-// 监听 mySalaryInfo.value.show 的变化
-watch(
-  () => mySalaryInfo.value?.show,
-  (newVal) => {
-    show.value = newVal
-  },
-)
 </script>
 
 <style scoped>

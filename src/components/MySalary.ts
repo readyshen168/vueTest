@@ -19,5 +19,5 @@ export default function () {
   function showInfo() {
     show.value = !show.value
   }
-  return { nameInput, name, salary, show, addSalary, showInfo }
+  return { nameInput, name, salary, addSalary }
 }

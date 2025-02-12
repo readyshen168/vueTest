@@ -3,7 +3,7 @@
     name:<input v-model="name" />{{ name }}<br />
     salary:<input type="number" v-model="salary" />{{ salary }}<br />
     <button v-on:click="addSalary">提交</button>
-    <button @click="showInfo">查看个人信息</button>
+    <button @click="toggleShow">查看个人信息</button>
   </div>
 </template>
 
@@ -16,8 +16,17 @@ export default {
 <script setup lang="ts">
 import MySalary from './MySalary'
 
-const { name, salary, show, addSalary, showInfo } = MySalary()
-defineExpose({ show, showInfo })
+const { name, salary, addSalary } = MySalary()
+
+const props = defineProps({
+  show: Boolean,
+})
+
+const emit = defineEmits(['update:show'])
+
+function toggleShow() {
+  emit('update:show', !props.show)
+}
 </script>
 
 <style scoped></style>
