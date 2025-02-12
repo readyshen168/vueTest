@@ -1,9 +1,7 @@
 <template>
   <div>
-    name:<input ref="nameInput" v-model="name" />{{ name }}<br />
-    salary:<input type="number" v-model="salary" />{{ salary }}<br />
-    <button v-on:click="addSalary">提交</button>
-    <button @click="showInfo">查看个人信息</button>
+    <MySalaryInfo ref="mySalaryInfo"></MySalaryInfo>
+    <button @click="showRes">查看元素信息</button>
     <hr />
 
     <div class="userinfo" v-show="show">
@@ -34,11 +32,36 @@
 </template>
 
 <script setup lang="ts">
-import MySalary from '@/components/MySalary'
+import MySalaryInfo from './components/MySalaryInfo.vue'
 import MyInfo from '@/components/MyInfo'
+import { nextTick, onMounted, ref, watch } from 'vue'
 
-const { name, salary, addSalary } = MySalary()
-const { userinfo, age, skills, newskill, show, addNewskill, showInfo } = MyInfo()
+const mySalaryInfo = ref()
+const show = ref(false)
+const { userinfo, age, skills, newskill, addNewskill } = MyInfo()
+
+function showRes() {
+  console.log(mySalaryInfo)
+  console.log(mySalaryInfo.value)
+  console.log(mySalaryInfo.value.show)
+}
+
+onMounted(async () => {
+  await nextTick()
+  if (mySalaryInfo.value) {
+    show.value = mySalaryInfo.value.show
+  } else {
+    console.log('mySalaryInfo is undefined')
+  }
+})
+
+// 监听 mySalaryInfo.value.show 的变化
+watch(
+  () => mySalaryInfo.value?.show,
+  (newVal) => {
+    show.value = newVal
+  },
+)
 </script>
 
 <style scoped>

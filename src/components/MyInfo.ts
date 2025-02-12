@@ -11,7 +11,6 @@ export default function () {
   const { age, skills } = toRefs(userinfo)
 
   const newskill = ref('')
-  const show = ref(false)
 
   function addNewskill() {
     if (newskill.value) {
@@ -20,9 +19,5 @@ export default function () {
     }
   }
 
-  function showInfo() {
-    show.value = !show.value
-    console.log(userinfo)
-  }
-  return { userinfo, age, skills, newskill, show, addNewskill, showInfo }
+  return { userinfo, age, skills, newskill, addNewskill }
 }
